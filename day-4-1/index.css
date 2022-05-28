@@ -1,0 +1,41 @@
+
+
+   body{
+    background-color: rgb(92, 142, 169);
+    font-family: 'Poppins', sans-serif;
+  }
+  h1{
+   color: rgb(174, 72, 72);
+    margin:auto;
+    width:30%;
+    
+  }
+  #movies{
+    margin-left: 100px;
+    width:auto;
+    height:auto;
+    /* color:white; */
+    overflow: scroll;
+    display:grid;
+    grid-template-columns: repeat(3,1fr);
+    }
+     #movies>div{
+    display:flex;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+   margin-right: 20px;
+   margin-top: 20px;
+   background-color: blue;
+   color:white;
+   height:200px;
+   border-radius: 10px;
+   }
+     #movies>div>img{
+    width:50%;
+   
+    border-radius: 10px;
+    }
+
+   input{
+    font-size: 20px;
+    margin-left: 100px;
+   }

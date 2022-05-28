@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mcd's</title>
+    <style>
+        h1{
+            width:30%;
+            margin:auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Mac'Donald</h1>
+   <input type="checkbox" value="burger">
+  <span>burger</span>
+   <input type="checkbox" value="chiken">
+   <span>chicken</span>
+   <input type="checkbox" value="cold drink">
+   <span>cold drink</span>
+  
+<button id="order">order food </button>
+
+   
+</body>
+</html>
+<script>
+    let data=document.getElementById("order")
+    data.addEventListener("click",function(){
+        let order_food=document.querySelector("input[type=checkbox]:checked").value
+        
+        let order_data=[]
+        order_data.push(order_food)
+        console.log(order_data)
+        order_data.forEach(function(ele){
+            let h2=document.createElement("h3")
+         h2.innerText=ele
+         console.log(h2)
+        })
+       
+    })
+
+</script>

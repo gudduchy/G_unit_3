@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    .gmap_canvas {overflow:hidden;
+    background:none!important;
+    height:500px;
+    width:600px;}
+    </style>
+    <style>
+body{
+    background-color: aquamarine;
+}
+button{
+    background-color: blue;
+    color:white;
+    font-size: 20px;
+}
+button:hover{
+    background-color: blueviolet;
+    cursor: pointer;
+}
+input{
+    font-size: 20px;
+}
+#container{
+    display:grid
+}
+#container>div{
+    color: blueviolet;
+    
+}
+    </style>
+</head>
+<body>
+    <h1>Weather info</h1>
+    <input type="text" value="" id="city">
+    <button onclick="getData()">Search Weather</button>
+    <div id="container"></div>
+
+    <div class="mapouter"><div class="gmap_canvas">
+        <iframe width="600" height="500" id="gmap_canvas" 
+        
+        frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+        
+        
+       
+        </div></div>
+</body>
+</html>
+<script>
+    const Api_key="90f47ce96e75bf004d3c53970b10f849"
+
+  async function getData(lat,lon){
+     let city=document.getElementById("city").value
+     let url=`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${Api_key}`
+     //let url=`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${Api_key}`
+     console.log(url)
+       
+     let res=await fetch(url)
+     let data=await res.json()
+     console.log(data)
+     apend(data)
+ }
+
+     function apend(data){
+        let container= document.getElementById("container")
+            container.innerHTML=null
+            let div=document.createElement("div")
+         let h1=document.createElement("h3")
+         h1.innerText=`City: ${data.name}`
+
+         let p1=document.createElement("p")
+         p1.innerText=`current Temp: ${data.main.temp}`
+        
+ 
+         let p2=document.createElement("p")
+         p2.innerText=`Maximum Temp: ${data.main.temp_max}`
+
+         let p3=document.createElement("p")
+         p3.innerText=`Minimum Temp: ${data.main.temp_min}`
+
+         let p4=document.createElement("p")
+         p4.innerText=`wind: ${data.visibility}`
+
+         let p5=document.createElement("p")
+         p5.innerText=`Humidity: ${data.main.humidity}`
+
+         console.log(p4)
+         div.append(h1,p1,p2,p3,p4,p5)
+         
+
+         container.append(div)
+        
+         let iframe=document.getElementById("gmap_canvas")
+         iframe.src=`https://maps.google.com/maps?q=${data.name}&t=&z=13&ie=UTF8&iwloc=&output=embed`
+        
+     }
+    
+
+     function getLocationWeather() {
+  navigator.geolocation.getCurrentPosition(success);
+  function success(position) {
+    const latitude = position.coords.latitude;
+    const longitude = position.coords.longitude;
+    console.log(latitude);
+    console.log(longitude);
+
+    getData(latitude,longitude)
+  }
+     }
+     getLocationWeather()
+
+</script>

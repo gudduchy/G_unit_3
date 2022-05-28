@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>psc</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family= 'Poppins', sans-serif;600&display=swap" rel="stylesheet">
+    <style>
+        body{
+            background-image: url("https://i.gifer.com/origin/0c/0cbecdf49afea239fad8497f3cd6e7c7_w200.gif");
+            margin-top: 100px;
+            font-family: 'Poppins', sans-serif;
+        }
+        #movie{
+            width:50%;
+            margin-left:220px;
+            border-radius: 15px;
+            height:auto;
+           
+           background-color: rgb(71, 70, 70);
+        }
+        #movie>div{
+            margin:20px 50px 10px 50px;
+           display:flex;
+           justify-content: space-around;
+          
+        }
+        h1{
+            width:30%;
+           color:darkorange;
+           margin-left:400px;
+           line-height: 5px;
+          font-style: italic;
+          font-size:100px;
+          text-decoration-line: overline;
+            
+            }
+        input{
+            width:50%;
+            font-size: 30px;
+            margin-left:220px;
+            border-radius: 15px;
+            background-color: rgb(73, 71, 71);
+            color:white;
+            border:0px;
+            height:60px;
+            /* margin-top: 50px; */
+        }
+        
+        
+
+    </style>
+</head>
+<body>
+    <h1>STAR</h1>
+    <h1>WARS</h1>
+    <input oninput=" debounceFunction(main,1000)" type="text" placeholder="Search Characters" id="query">
+    <div id="movie"></div>
+</body>
+</html>
+<script>
+        let id;
+        let container= document .getElementById("movie")
+
+     async function getData(q){
+         let url=`https://swapi.dev/api/people/?search=${q}`
+         try{
+         
+            let res = await fetch(url)
+            let data = await res.json()
+             console.log(data.results)
+            return data.results;
+         }catch(err){
+             console.log("error"+err)
+         }
+
+     }
+
+      async function main(){
+         let query=document.getElementById("query").value
+           
+         let response =  getData(query)
+         let data = await response
+        
+        apend(data)
+     }
+     
+      function apend(movies){
+
+          container.innerHTML=null
+
+          
+         movies.forEach(function(ele){
+            let  div = document.createElement("div")
+
+             let p1=document.createElement("p")
+             p1.innerText=ele.name;
+              p1.style.color="white"
+              p1.style.cursor="pointer"
+             
+
+               let p2=document.createElement("p")
+                   p2.innerText=ele.gender
+                   p2.style.color="green"
+                   p2.style.marginLeft="100px"
+                  
+
+                   let p3=document.createElement("p")
+                   p3.innerText=ele.birth_year
+                   p3.style.color="pink"
+                   p3.style.marginLeft="100px"
+                  
+
+              div.append(p1,p2,p3)
+              container.append(div)
+         })
+      }
+
+         function debounceFunction(func,delay){
+             if(id){
+                 clearTimeout(id)
+             }
+        
+          id = setTimeout(function(){
+            func();
+          },delay)
+
+         }
+
+</script>

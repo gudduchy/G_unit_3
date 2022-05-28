@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #container{
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            
+        }
+        #container>div{
+          margin-top: 20px;
+        }
+        #container1{
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            margin:auto;
+            
+        }
+        #container1>div{
+          margin-top: 20px;
+        }
+        #container1>div>img{
+            width:50%;
+        }
+    </style>
+</head>
+<body>
+    <div id="container"></div>
+<div id="container1"></div>
+</body>
+</html>
+<script>
+    const url="https://reqres.in/api/users"
+
+// fetch(url)
+//   .then(function(res){
+//       return res.json();
+//   })
+//   .then(function(res){
+//     console.log(res.data)
+//   })
+ 
+//   .catch(function(err){
+//       console.log(err)
+//   })
+
+
+async function getData(){
+    try{
+        let res=await fetch(url);
+        let user=await res.json();
+  console.log(user.data)
+  append(user.data);
+    }  catch(err){
+        console.log(err);
+    }
+}
+    getData() 
+
+
+
+function append(data){
+    let container=document.getElementById("container")
+  data.forEach(function(ele){
+      let img=document.createElement("img")
+      img.src=ele.avatar;
+      let h2=document.createElement("h2")
+      h2.innerText=ele.first_name+" "+ele.last_name;
+    //   let h3=document.createElement("h2")
+    //   h3.innerText=ele.last_name;
+      let p=document.createElement("p")
+      p.innerText=ele.email;
+      let div=document.createElement("div")
+      div.append(img,h2,p)
+      container.append(div)
+  })
+      
+  } 
+     const url_1="https://fakestoreapi.com/products" 
+
+
+  async function getData_1(){
+      try{
+          let res=await fetch(url_1)
+          let user_1=await res.json();
+          console.log(user_1)
+          detail(user_1)
+      } catch(err){
+          console.log(err)
+      }
+  }
+   getData_1()
+ 
+  function detail(data){
+      let container1=document.getElementById("container1")
+     data.forEach(function(ele){
+         let img=document.createElement("img")
+         img.src=ele.image;
+         let p=document.createElement("p")
+         p.innerText=ele.description
+         let h1=document.createElement("h3")
+         h1.innerText=ele.category
+         let h2=document.createElement("h3")
+         h2.innerText="₹ "+ele.price
+         let h3=document.createElement("h4")
+         h3.innerText=ele.title
+         let div=document.createElement("div")
+         div.append(img,h3,h1,h2)
+         container1.append(div)
+     })
+  }
+</script>
+
