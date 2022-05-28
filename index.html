@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input oninput="main()" type="text" id="search">
+</body>
+</html>
+<script>
+
+  async function getData(s){
+      try{
+      let url=`https://api.themoviedb.org/search${s}?api_key=d3e2516391d1b6449617a582aa231f71`
+    
+      let res = await fetch(url)
+      let data = await res.json()
+      console.log(data)
+      }catch(err){
+          console.log(err+"error")
+      }
+    }
+ 
+function main(){
+    let search=document.getElementById("search").value
+    //console.log(search)
+    getData(search)
+}
+</script>

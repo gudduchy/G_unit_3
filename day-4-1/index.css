@@ -1,13 +1,18 @@
 
 
    body{
-    background-color: rgb(92, 142, 169);
+    background-image: url("https://thumbs.gfycat.com/ActualPresentAntipodesgreenparakeet-max-1mb.gif");
     font-family: 'Poppins', sans-serif;
+    margin-top: 100PX;
   }
   h1{
-   color: rgb(174, 72, 72);
-    margin:auto;
     width:30%;
+       color:darkorange;
+       margin-left:400px;
+       line-height: 5px;
+      font-style: italic;
+      font-size:100px;
+      text-decoration-line: overline;
     
   }
   #movies{
@@ -15,7 +20,7 @@
     width:auto;
     height:auto;
     /* color:white; */
-    overflow: scroll;
+    /* overflow: scroll; */
     display:grid;
     grid-template-columns: repeat(3,1fr);
     }
@@ -36,6 +41,12 @@
     }
 
    input{
-    font-size: 20px;
-    margin-left: 100px;
+    width:50%;
+        font-size: 30px;
+        margin-left:220px;
+        border-radius: 15px;
+        background-color: rgb(73, 71, 71);
+        color:white;
+        border:0px;
+        height:60px;
    }
