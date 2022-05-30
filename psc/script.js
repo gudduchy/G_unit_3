@@ -36,12 +36,18 @@
           
           movies.forEach(function(ele){
              let  div = document.createElement("div")
- 
+               
+                  div.addEventListener("click",function(){
+                  
+                     localStorage.setItem("movie",JSON.stringify(ele))
+                   window.location.href="bookmark.html"
+                  })
+
               let p1=document.createElement("p")
               p1.innerText=ele.name;
-               p1.style.color="white"
+              // p1.style.color="white"
                p1.style.cursor="pointer"
-              
+               p1.setAttribute("class","p")
  
                 let p2=document.createElement("p")
                     p2.innerText=ele.gender

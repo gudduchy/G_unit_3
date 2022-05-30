@@ -37,18 +37,22 @@
        }
           movies.forEach(function(ele){
              
-            let div = document.createElement("div")
-
-            let img=document.createElement("img")
-            img.src=ele.Poster
+           
             let p1 = document.createElement("h4")
             p1.innerText=ele.Title;
             p1.style.marginLeft="20px"
+            p1.style.cursor="pointer"
+            
+            p1.addEventListener("click",func)
+            function func(){
+               localStorage.setItem("movie",JSON.stringify(ele)) 
+               window.location.href="bookmark.html"
+            }
 
-            let p2 = document.createElement("p")
-            p2.innerText=ele.Type;
-            div.append(img,p1)
-            container.append(div)
+            // let p2 = document.createElement("p")
+            // p2.innerText=ele.Type;
+            //div.append(img,p1)
+            container.append(p1)
         })
     }
 

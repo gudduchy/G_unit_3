@@ -3,15 +3,16 @@
 
        body{
         background-image: url("https://i.gifer.com/origin/0c/0cbecdf49afea239fad8497f3cd6e7c7_w200.gif");
-        margin-top: 100px;
+         margin-top: 100px; 
         font-family: 'Poppins', sans-serif;
     }
     #movie{
         width:50%;
         margin-left:220px;
         border-radius: 15px;
-        height:auto;
-      
+       
+       max-height: 300px;
+        overflow:auto;
        background-color: rgb(71, 70, 70);
     }
     #movie>div{
@@ -23,7 +24,7 @@
     h1{
         width:30%;
        color:darkorange;
-       margin-left:400px;
+        margin-left:400px; 
        line-height: 5px;
       font-style: italic;
       font-size:100px;
@@ -33,12 +34,16 @@
     input{
         width:50%;
         font-size: 30px;
-        margin-left:220px;
+         margin-left:220px; 
         border-radius: 15px;
         background-color: rgb(73, 71, 71);
         color:white;
         border:0px;
         height:60px;
         /* margin-top: 50px; */
+       
     }
-    
+    .p{
+    color:greenyellow
+    }
+

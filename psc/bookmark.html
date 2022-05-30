@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;0,600;0,700;1,500&display=swap" rel="stylesheet">
+    <style>
+        body{
+            background-image: url("https://i.pinimg.com/originals/2d/08/13/2d0813189ab062e5379080ba6d2b0969.gif");
+            font-family: 'Poppins', sans-serif;
+        }
+        #show_detail{
+            margin:auto;
+            height:400px;
+            width:500px;
+            border:1px solid red;
+           border:5px solid rgb(172, 41, 41);
+           border-radius: 10px;
+           margin-top: 100px;
+        }
+        #name{  
+            text-align: center;
+            color:brown;
+            cursor:pointer;
+        }
+
+        .div1 {
+            border:2px solid rgb(215, 14, 14);
+            width:200px;
+            text-align: center;
+            border-radius: 10px;
+            color: rgb(215, 14, 14);
+        }
+        .div1:hover{
+            background-color: white;
+            cursor: pointer;
+        }
+        .div2:hover{
+            background-color: white;
+            cursor: pointer;
+        }
+        .div2{
+            border:2px solid rgb(172, 38, 38);
+            width:200px;
+            text-align: center;
+            border-radius: 10px;
+            color:rgb(215, 14, 14);
+        }
+        .button{
+            width: 150px;
+            height:30px;
+            margin:50px 180px 50px 180px;
+            border-radius: 10px;
+            color: rgb(215, 14, 14);;
+            font-size: 18px;
+            border-color: rgb(215, 14, 14) ;
+            background-color: black;
+        }
+        .button:hover{
+          background-color: teal;
+          color:white
+        }
+    </style>
+</head>
+<body>
+    <h1 id="name"></h1>
+    <div id="show_detail">
+       
+    </div>
+</body>
+</html>
+<script>
+    let container = document.getElementById("show_detail")
+    let movie_detail = JSON.parse(localStorage.getItem("movie"))
+    console.log( movie_detail)
+    let div1 = document.createElement("div")
+     div1.setAttribute("class","div1") 
+
+    let div2 = document.createElement("div")
+    div2.setAttribute("class","div2") 
+
+    let h1 = document.createElement("h2")
+    h1.innerText = "Personal Info."
+
+    let h2 = document.createElement("h2")
+    h2.innerText = "Anatomy"
+
+    let name = document.getElementById("name")
+
+    name.innerText = ` ${movie_detail.name}`
+   
+    let p2=document.createElement("p")
+    p2.innerText = "Birth_Year : "+ movie_detail.birth_year
+
+    let p3=document.createElement("p")
+      p3.innerText =  "Mass : "+movie_detail.mass
+
+    let p4=document.createElement("p")
+    p4.innerText = "Height : "+movie_detail.height
+
+    let p5=document.createElement("p")
+    p5.innerText = "Skin_Tone: : "+movie_detail.skin_color
+
+    let p6=document.createElement("p")
+    p6.innerText ="Gender : "+ movie_detail.gender
+
+    let div_main =document.createElement("div")
+       div_main.setAttribute("style","display:flex; justify-content: space-around")
+       
+       let btn = document.createElement("button")
+       btn.innerText = "Go Back"
+       btn.setAttribute("class","button")
+       btn.addEventListener("click",func)
+
+    div1.append(h1,p2,p6,)
+
+    div2.append(h2,p5,p4,p3,)
+
+    div_main.append(div1,div2)
+
+    container.append(name,div_main,btn)
+
+    function func(){
+        window.location.href="index.html"
+    }
+</script>
+

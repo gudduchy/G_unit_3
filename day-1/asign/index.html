@@ -29,16 +29,21 @@
 <script>
     let data=document.getElementById("order")
     data.addEventListener("click",function(){
-        let order_food=document.querySelector("input[type=checkbox]:checked").value
-        
-        let order_data=[]
-        order_data.push(order_food)
-        console.log(order_data)
-        order_data.forEach(function(ele){
-            let h2=document.createElement("h3")
-         h2.innerText=ele
-         console.log(h2)
+        let order_food=document.querySelectorAll("input[type=checkbox]:checked")
+        JSON. order_food
+        console.log(order_food)
+        let datafood=order_food.map(function(ele){
+        return ele
         })
+         console.log(datafood)
+        // let order_data=[]
+        // order_data.push(order_food)
+        // console.log(order_data)
+        // order_data.forEach(function(ele){
+        //     let h2=document.createElement("h3")
+        //  h2.innerText=ele
+        //  console.log(h2)
+       // })
        
     })
 
