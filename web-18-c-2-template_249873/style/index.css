@@ -1,0 +1,47 @@
+     
+      #menu{
+        display:grid;
+        grid-template-columns: repeat(3,1fr);
+      }
+      #menu>div>img{
+        width:50%;
+        margin:20px 30px 30px 30px;
+        height:50%;
+      }
+      #navbar{
+           height:100px;
+           background-color: teal;
+           color:white;
+         display:flex  ;
+         justify-content: flex-end;
+           margin-bottom: 50px;;
+      }
+      #navbar>div{
+       justify-content: space-between;
+       width:50%;
+      }
+      #ls{
+        display:flex;
+        justify-content: space-between;
+       
+      }
+      
+         button{
+           margin-top:20px;
+         height:50px;
+           margin-left: 50px;
+           width:auto;
+           border-radius: 10px;
+         }
+         #coffee_count{
+          margin-left: 100px;
+          margin-top:30px
+         }
+         .apend_box{
+           border:2px solid brown ;
+          width:70%;
+          margin-bottom: 20px;
+          height:500px;;
+         padding-left: 50px;
+         border-radius: 10px;
+         }
