@@ -1,7 +1,7 @@
      
 
       let total=document.getElementById("wallet_balance")
-    total.innerHTML=null
+   // total.innerHTML=null
           let details=JSON.parse(localStorage.getItem("user"))
         
           //console.log(details)
@@ -9,7 +9,7 @@
 
 
 
-  async function  getData(){
+   async function  getData(){
    let url=" https://masai-vouchers-api.herokuapp.com/api/vouchers"
      try{
      let res=await fetch(url)
@@ -43,25 +43,37 @@
         btn.addEventListener("click",function(){
           // console.log(details)
           // console.log(ele.price)
+         
+          
           if(ele.price<=details.amount){
             alert("Hurray! purchase successful")
             // details.amount =details.amount-ele.price
             // console.log(details.amount)
-
+            let arr=JSON.parse(localStorage.getItem("purchase"))||[]
+            arr.push(ele)
+            localStorage.setItem("purchase",JSON.stringify(arr))
+            // window.location.reload()
           }
           else{
             alert("Sorry! insufficient balance")
           }
-          details.amount =details.amount-ele.price
-            console.log(details.amount)
-            total.innerHTML=null
-            total.append(details.amount)
-            
 
-          let arr=JSON.parse(localStorage.getItem("purchase"))||[]
-          arr.push(ele)
-          localStorage.setItem("purchase",JSON.stringify(arr))
-          // window.location.reload()
+          //total.innerHTML=null
+            
+          
+         details.amount =details.amount-ele.price;
+
+           // console.log(details.amount)
+           if(details.amount<=0){
+            total.innerHTML=null
+            total.innerHTML="00"
+           }
+           
+           else{
+            total.innerHTML=null
+            
+           total.append(details.amount) 
+           }
         })
      
         div.append(img,h1,h2,btn)
