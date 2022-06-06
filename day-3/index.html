@@ -6,10 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather</title>
     <style>
+        body{
+            background-image: url("https://t4.ftcdn.net/jpg/04/61/23/23/360_F_461232389_XCYvca9n9P437nm3FrCsEIapG4SrhufP.jpg");
+        }
     .gmap_canvas {overflow:hidden;
     background:none!important;
     height:500px;
-    width:600px;}
+    width:600px;
+    
+}
+ 
+  
     </style>
     <style>
 body{
@@ -19,20 +26,31 @@ button{
     background-color: blue;
     color:white;
     font-size: 20px;
+    border-radius: 10px;;
 }
 button:hover{
     background-color: blueviolet;
     cursor: pointer;
+   
 }
 input{
     font-size: 20px;
+    border-radius: 10px;;
 }
 #container{
-    display:grid
+    display:grid;
+    
 }
 #container>div{
-    color: blueviolet;
+    color: rgb(82, 10, 150);
     
+}
+#box{
+    display:flex;
+    justify-content: space-around;
+}
+h1{
+    color:rgb(56, 59, 56)
 }
     </style>
 </head>
@@ -40,6 +58,7 @@ input{
     <h1>Weather info</h1>
     <input type="text" value="" id="city">
     <button onclick="getData()">Search Weather</button>
+    <div id="box">
     <div id="container"></div>
 
     <div class="mapouter"><div class="gmap_canvas">
@@ -50,6 +69,7 @@ input{
         
        
         </div></div>
+    </div>
 </body>
 </html>
 <script>
@@ -75,7 +95,7 @@ input{
          h1.innerText=`City: ${data.name}`
 
          let p1=document.createElement("p")
-         p1.innerText=`current Temp: ${data.main.temp}`
+         p1.innerText=`current Temp: ${data.main.temp} `
         
  
          let p2=document.createElement("p")

@@ -27,7 +27,7 @@
       }
       
        function apend(movies){
- 
+            //console.log(movies)
            container.innerHTML=null
            
            if(movies==undefined){

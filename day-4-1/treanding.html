@@ -7,10 +7,45 @@
     <title>Document</title>
 </head>
 <body>
-    
+    <div id="container"></div>
+
 </body>
 </html>
 <script>
-    const api_key = "d3e2516391d1b6449617a582aa231f71"
-    let url = "https://api.themoviedb.org/3/movie/550?api_key=d3e2516391d1b6449617a582aa231f71"
+    //const api_key = "d3e2516391d1b6449617a582aa231f71"
+   // let url = https://api.themoviedb.org/3/search/movie?api_key=${api_key}&query=${q}"
+    
+    async function getData(){
+       
+        let url=`https://api.themoviedb.org/3/trending/movie/day?api_key=d3e2516391d1b6449617a582aa231f71`
+        try{
+       let res = await fetch(url)  
+       let data = await res.json() 
+       apend(data.results)
+       //console.log(data.results) 
+        }catch(err){
+            console.log("error",err)
+        }
+
+    } getData()
+   
+    let container =document.getElementById("container")
+        let apend = (movie)=>{
+         console.log(movie)
+         
+         movie.forEach((ele)=>{
+         
+            let div=document.createElement("div")
+            let img=document.createElement("img")
+            img.src=ele.poster_path
+
+            let p1 = document.createElement("h3")
+            p1.innerText= ele.release_date
+            div.append(img,p1)
+            container.append(div)
+         })
+        }
+        
+        
+    
 </script>

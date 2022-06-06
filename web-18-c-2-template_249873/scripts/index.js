@@ -57,11 +57,8 @@ let menu =document.getElementById("menu")
         div.append(img,p1,p2,btn)
        menu.append(div)
 
-       
-
-      })
+       })
       
-     
      }
 
      let count =document.getElementById("coffee_count")
